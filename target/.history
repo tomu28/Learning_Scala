@@ -1,0 +1,12 @@
+:quit
+ls
+cd ..
+quit
+:quit
+ls
+run
+quit
+:quit
+ls
+:quit
+exit

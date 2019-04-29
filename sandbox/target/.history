@@ -1,0 +1,15 @@
+run
+val u = new User("ddd", 12)
+:quit
+quit
+:quit
+;quit
+:q
+q
+:q
+:quit
+exit
+:quit
+:quit 
+:quit
+exit
