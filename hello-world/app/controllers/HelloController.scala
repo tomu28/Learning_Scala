@@ -1,20 +1,20 @@
 package controllers
 
-import javax.inject.Inject
-import play.api.i18n.I18nSupport
-import play.api.i18n.Messages
-import play.api.i18n.MessagesApi
 import play.api.mvc.Action
 import play.api.mvc.Controller
 
-class HelloController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class HelloController extends Controller {
+
+  val logger = play.api.Logger("hello")
 
   def get(name: Option[String]) =
     Action { implicit request =>
+      logger.info(s"name parameter: $name")
+
       Ok {
         name
-          .map(s => Messages("hello", s))
-          .getOrElse(Messages("noQuery"))
+          .map(s => s"Hello, ${s}!")
+          .getOrElse("""Please give a name as a query parameter named "name".""")
       }
     }
 }
