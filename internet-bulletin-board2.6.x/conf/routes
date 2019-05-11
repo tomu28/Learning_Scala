@@ -1,0 +1,16 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# 投稿一覧：Get /posts
+GET    /posts                      controllers.PostsController.get()
+# 新規投稿作成：POST /posts/create
+POST   /posts/create               controllers.PostsController.post()
+# 投稿へのコメント一覧：GET /posts/:post_id/comments
+#GET    /posts/:post_id/comments          controllers.PostsController.comments(post_id: Long)
+## 投稿へのコメント作成：POST /posts/:post_id/comments/create
+#POST   /posts/:post_id/comments/create   controllers.PostsController.comments(post_id: Long).create
+
+
+GET    /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
