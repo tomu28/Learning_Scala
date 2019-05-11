@@ -11,11 +11,11 @@ import play.api.i18n.MessagesApi
 
 case class PostRequest(body: String)
 
-class TextboardController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class PostsController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   private[this] val form = Form(
     mapping(
-      "post" -> text(minLength = 1, maxLength = 10).withPrefix("hogeika")
+      "post" -> text(minLength = 1, maxLength = 100).withPrefix("hogeika")
     )(PostRequest.apply)(PostRequest.unapply))
 
   def get = Action { implicit request =>
@@ -28,7 +28,7 @@ class TextboardController @Inject()(val messagesApi: MessagesApi) extends Contro
       postRequest => {
         val post = Post(postRequest.body, OffsetDateTime.now)
         PostRepository.add(post)
-        Redirect("/")
+        Redirect("/posts")
       }
     )
   }
